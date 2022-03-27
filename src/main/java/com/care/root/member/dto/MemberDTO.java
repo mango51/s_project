@@ -8,7 +8,15 @@ public class MemberDTO {
 	private String addr;
 	private Date limitTime;
 	private String sessionId;
+	private String name;
+	private int money;
 	
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
 	public Date getLimitTime() {
 		return limitTime;
 	}
@@ -41,6 +49,13 @@ public class MemberDTO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 	
 }

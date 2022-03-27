@@ -19,7 +19,7 @@
 	<div class="wrap content">
 		<table border="1" class="table table-hover">
 			<tr>
-				<th> 아이디  </th> <th> 비번 </th> <th> 주소 </th>
+				<th> 아이디  </th> <th> 이름 </th><th> 비번 </th> <th> 주소 </th>
 			</tr>
 			
 			<c:forEach var = "dto" items ="${memberList }">
@@ -29,6 +29,7 @@
 							${dto.getId() }
 						</a>
 					</td>
+					<td>${dto.getName() }</td>
 					<td>${dto.getPw() }</td>
 					<td>${dto.getAddr() }</td>
 				</tr>

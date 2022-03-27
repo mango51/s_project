@@ -46,8 +46,9 @@
 
 .navdiv {
 	width: 100%;
-	border-bottom : 1px solid #1E90FF;
+	border-bottom : 1px solid #3C5A91;
 	padding-top : 20px;
+	
 	
 }
 .setting{

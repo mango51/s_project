@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -36,9 +37,9 @@ public class MemberController implements MemberSessionName {
 	public String login() {
 		return "member/login";
 	} // login을 받아 들여서 login.jsp 파일로 이동하기
-
+	
 	@PostMapping("user_check") // member/user_check 내용
-	public String userCheck(HttpServletRequest req, RedirectAttributes rs) {
+	public String userCheck(HttpServletRequest req, RedirectAttributes rs,HttpServletResponse resp) throws Exception {
 		// ************ 반환타입 void로 해서 첨부파일 없다는 알림 오게 만들기
 		// DB 접근하기 위해 서비스(service)와 연결 > 서비스 연결하여 DB 접속
 		// Controller 연결용, Service 연산하기 위한 용도
@@ -49,10 +50,19 @@ public class MemberController implements MemberSessionName {
 			return "redirect:successLogin";
 		}
 		if(result==2) {
-			return "redirect:login";
+			
+			
+			
+			resp.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter out = resp.getWriter(); 
+			out.println("<script>alert('로그인 시 금융인증서가 필요합니다!'); location.href='../member/login';</script>"); 
+			out.flush();
+
+			
 		}
 		return "redirect:login";
 	}
+	
 
 	@RequestMapping("successLogin")
 	public String successLogin(@RequestParam String id, HttpSession session,@RequestParam(required=false) String autoLogin, HttpServletResponse response) {
@@ -95,6 +105,7 @@ public class MemberController implements MemberSessionName {
 		ms.memberInfo(model);
 		return "member/memberInfo";
 	}
+	
 	
 	@GetMapping("info")
 	public String info(@RequestParam("id") String userid, Model model) {

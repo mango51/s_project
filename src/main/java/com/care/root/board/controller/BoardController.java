@@ -32,7 +32,7 @@ public class BoardController {
 		//requestmapping으로 board(BoardMapper.xml)에서 실행된 결과값 가져온 model
 		//required=false 이면 num값이 없더라도 0으로 처리함 >> 처음에 들어갈 때는 start 페이지 제공 X ==num값 없음
 		//하지만 defaultValue="1"로 디폴트로 num=1로 함
-		// 값이 없으면 처음 페이지에 들어감 >> 
+		// 값이 없으면 처음 페이지에 들어감 
 		bs.boardAllList(model,num); // DB에서 가져온 결과값 model(board 실행값) 들고 boardservice로 이동해서 해당 메소드 실행
 		// num은 페이지 번호 >> 넘기기
 		return "board/boardAllList"; //BoardService에서 완성된 bs 결과값을 반영하여 다시 보내기 (요청했던 header.jsp로)
